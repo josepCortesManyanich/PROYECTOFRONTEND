@@ -8,6 +8,11 @@ import Signup from './views/auth/Signup';
 import Login from './views/auth/Login';
 import PrivateView from './views/PrivateView';
 import IsPrivate from './components/IsPrivate';
+import Training from './views/Training';
+import CreateTraining from './views/Create-Training';
+import CreateEvent from './views/Create-Event';
+
+
 
 function App() {
   return (
@@ -20,6 +25,14 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/private" element={<IsPrivate><PrivateView/></IsPrivate>}/>
         <Route path="*" element={<ErrorPage />} />
+      </Routes>
+      <Routes>
+        <Route path="/training" element={<Training/>}/>
+        <Route path="/training/create" element={<CreateTraining/>}/>
+      </Routes>
+      <Routes>
+        <Route path="/event" element={<Event/>}/>
+        <Route path="/event/create" element={<CreateEvent/>}/> 
       </Routes>
     </div>
   );
