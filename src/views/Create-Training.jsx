@@ -24,7 +24,7 @@ export default function CreateTraining(){
       const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-          const newTraining = await axios.post('http://localhost:8000/api/v1/training'), training
+          const newTraining = await axios.post('http://localhost:8000/api/v1/training', training)
           toast.success('Project created successfully')
           navigate(`/training/${newTraining.data.data._id}`)
         } catch (error) {
@@ -38,7 +38,7 @@ export default function CreateTraining(){
     return(
         <div>
       <form onSubmit={handleSubmit}>
-          
+
         <label>Nombre</label>
         <input type="text" name="name" placeholder="Nombre" value={training.name} onChange={(e) => setTraining(e.target.value)}/>
         <input type="text" name="image" placeholder="URL de la imagen " value={training.image} onChange={(e) => setTraining(e.target.value)} />
