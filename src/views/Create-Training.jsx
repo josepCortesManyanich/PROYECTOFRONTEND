@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import { useNavigate } from "react-router-dom";
 import toast from 'react-hot-toast';
 import axios from 'axios';
@@ -8,12 +8,12 @@ export default function CreateTraining(){
         name:'',
         image:'',
         date:'',
-        category:'',
-        
+        category:'',  
     })
     const navigate = useNavigate()
 
     const handleChange = (e) => {
+        console.log(training)
         setTraining(prev => {
           return {
             ...prev,
@@ -21,6 +21,7 @@ export default function CreateTraining(){
           }
         })
       }
+      
       const handleSubmit = async (e) => {
         e.preventDefault();
         try {
@@ -40,17 +41,16 @@ export default function CreateTraining(){
       <form onSubmit={handleSubmit}>
 
         <label>Nombre</label>
-        <input type="text" name="name" placeholder="Nombre" value={training.name} onChange={(e) => setTraining(e.target.value)}/>
-        <input type="text" name="image" placeholder="URL de la imagen " value={training.image} onChange={(e) => setTraining(e.target.value)} />
+        <input type="text" name="name" placeholder="Nombre" value={training.name} onChange={handleChange}/>
+        <input type="text" name="image" placeholder="URL de la imagen " value={training.image} onChange={handleChange} />
         <label>Hora de entreno</label>
-        <input type="text" name="date" placeholder="Hora " value={training.date} onChange={(e) => setTraining(e.target.value)} />
+        <input type="text" name="date" placeholder="Hora " value={training.date} onChange={handleChange} />
         <label>Categoria</label>
-        <input type="text" name="image" placeholder="URL de la imagen " value={training.image} onChange={(e) => setTraining(e.target.value)} />
-        <select id="category" name="category">
-        {/*<option value={training.}>Pads</option>
+        <select id="category" name="category" value={training.category} onChange={handleChange}>
+            <option value="pads">Pads</option>
             <option value="airbyke">Air Byke</option>
-            <option value= "tabata"> Tabata</option>
-    <option value= "sparring">  Sparring</option>*/}
+            <option value="tabata">Tabata</option>
+            <option value="sparring">Sparring</option>
         </select>              
         <button type="submit">Save</button>
       </form>

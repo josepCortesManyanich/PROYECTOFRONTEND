@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { useNavigate } from "react-router-dom";
 import toast from 'react-hot-toast';
 import axios from 'axios';
@@ -24,8 +24,8 @@ export default function CreateEvent(){
         e.preventDefault();
         try {
           const newEvent = await axios.post('http://localhost:8000/api/v1/event', event)
-          toast.success('Project created successfully')
-          navigate(`/event/${newEvent.data.data._id}`)
+          toast.success('Event created successfully')
+          navigate('/event')
         } catch (error) {
           console.error(error);
         }
@@ -39,10 +39,10 @@ export default function CreateEvent(){
       <form onSubmit={handleSubmit}>
 
         <label>Nombre</label>
-        <input type="text" name="name" placeholder="Nombre" value={event.name} onChange={(e) => setEvent(e.target.value)}/>
-        <input type="text" name="image" placeholder="URL de la imagen " value={event.image} onChange={(e) => setEvent(e.target.value)} />
+        <input type="text" name="name" placeholder="Nombre" value={event.name} onChange={handleChange}/>
+        <input type="text" name="image" placeholder="URL de la imagen " value={event.image} onChange={handleChange} />
         <label>Hora del evento</label>
-        <input type="text" name="date" placeholder="Hora " value={event.date} onChange={(e) => setEvent(e.target.value)} />
+        <input type="text" name="date" placeholder="Hora " value={event.date} onChange={handleChange} />
         </form>
         </div>
         )

@@ -11,6 +11,7 @@ import IsPrivate from './components/IsPrivate';
 import Training from './views/Training';
 import CreateTraining from './views/Create-Training';
 import CreateEvent from './views/Create-Event';
+import Event from './views/Event';
 
 
 
@@ -24,15 +25,11 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route path="/private" element={<IsPrivate><PrivateView/></IsPrivate>}/>
-        <Route path="*" element={<ErrorPage />} />
-      </Routes>
-      <Routes>
-        <Route path="/training" element={<Training/>}/>
+        <Route path="/trainings" element={<Training/>}/>
         <Route path="/training/create" element={<CreateTraining/>}/>
-      </Routes>
-      <Routes>
         <Route path="/event" element={<Event/>}/>
         <Route path="/event/create" element={<CreateEvent/>}/> 
+        <Route path="*" element={<ErrorPage />} />
       </Routes>
     </div>
   );
