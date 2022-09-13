@@ -19,4 +19,40 @@ export default function TrainingDetail(){
         }
         data()
     },[id])
+
+    const handleChange = (e) => {
+        setTraining(prev => {
+          return {
+            ...prev,
+            [e.target.name]: e.target.value
+          }
+        })
+        console.log(training)
+      }
+    
+
+    //const handleSubmit = async (e) => {
+       // e.preventDefault();
+       //  try {
+       //     const newTraining = await axios.put(`http://localhost:8000/api/v1/training/${id}`, training);
+       //     navigate(`/training/${newTraining.data.data._id}`)
+      //      setTraining(newTraining)
+      //  } catch (error) {
+      //      console.error(error);
+      //  }
+   // }
+
+    return (
+        <div>
+          {training && (
+            <div>
+                <h1>{training.name}</h1>
+                <img src={training.image} alt="" />
+                <h2>{training.date}</h2>
+            </div>   
+          )}
+        </div>
+      )
+
+
 }
