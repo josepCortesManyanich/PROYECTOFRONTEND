@@ -6,6 +6,7 @@ import axios from 'axios';
 export default function TrainingDetail(){
     const[training, setTraining] = useState()
     const{id} = useParams()
+    const storedToken = localStorage.getItem()
 
     useEffect(() =>{
         const data = async () =>{
@@ -30,17 +31,22 @@ export default function TrainingDetail(){
         console.log(training)
       }
     
-
-    //const handleSubmit = async (e) => {
-       // e.preventDefault();
-       //  try {
-       //     const newTraining = await axios.put(`http://localhost:8000/api/v1/training/${id}`, training);
-       //     navigate(`/training/${newTraining.data.data._id}`)
-      //      setTraining(newTraining)
-      //  } catch (error) {
-      //      console.error(error);
-      //  }
-   // }
+    const handleUser = async(e) => {
+        e.preventDefault();
+        try {
+            const newUser = await axios.put(`http://localhost:8000/api/v1/training/addUser/${id}`,training, { headers: { Authorization: `Bearer ${storedToken}` } } )
+            navigate(`/training/${newUser.data.data._id}`)
+            setTraining(newTraining)
+        } catch (error) {
+            console.error(error)
+        }
+    }
+   /// const handleDelete = async(e) => {
+        //const deletedUser = Training.filter(elem => elem.name !== name)
+        //setTask(deletedTask)
+      //}
+    //}
+       
 
     return (
         <div>
@@ -49,6 +55,7 @@ export default function TrainingDetail(){
                 <h1>{training.name}</h1>
                 <img src={training.image} alt="" />
                 <h2>{training.date}</h2>
+                <button onChange={handleUser}>ENTRENAR</button>
             </div>   
           )}
         </div>
