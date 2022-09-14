@@ -6,6 +6,7 @@ import axios from 'axios';
 export default function TrainingDetail(){
     const[training, setTraining] = useState()
     const{id} = useParams()
+    const[user, setUser] = useState()
     const storedToken = localStorage.getItem()
 
     useEffect(() =>{
@@ -34,18 +35,25 @@ export default function TrainingDetail(){
     const handleUser = async(e) => {
         e.preventDefault();
         try {
-            const newUser = await axios.put(`http://localhost:8000/api/v1/training/addUser/${id}`,training, { headers: { Authorization: `Bearer ${storedToken}` } } )
-            navigate(`/training/${newUser.data.data._id}`)
+            const newUser = await axios.get(`http://localhost:8000/api/v1/training/addUser/${id}`,training, { headers: { Authorization: `Bearer ${storedToken}` } } )
+            navigate('/training')
             setTraining(newTraining)
         } catch (error) {
             console.error(error)
         }
     }
-   /// const handleDelete = async(e) => {
-        //const deletedUser = Training.filter(elem => elem.name !== name)
-        //setTask(deletedTask)
-      //}
-    //}
+
+    const handleUserDeleted = async(e) => {
+        e.preventDefault();
+        try {
+            const deletedUser = await axios.get(`http://localhost:8000/api/v1/training/addUser/${id}`,training, { headers: { Authorization: `Bearer ${storedToken}` } } )
+            navigate('/training')
+            setUser(deletedUser)
+        } catch (error) {
+            console.error(error)
+        }
+    }
+ 
        
 
     return (
@@ -55,7 +63,8 @@ export default function TrainingDetail(){
                 <h1>{training.name}</h1>
                 <img src={training.image} alt="" />
                 <h2>{training.date}</h2>
-                <button onChange={handleUser}>ENTRENAR</button>
+                <button onChange={handleUser}>ASISTIR</button>
+                <button onChange={handleUserDeleted}> NO ASISTIR</button>
             </div>   
           )}
         </div>
