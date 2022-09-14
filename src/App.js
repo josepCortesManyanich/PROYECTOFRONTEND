@@ -11,6 +11,7 @@ import IsPrivate from './components/IsPrivate';
 import Training from './views/Training';
 import CreateTraining from './views/Create-Training';
 import CreateEvent from './views/Create-Event';
+import TrainingDetail from './views/TrainingDetail';
 import Event from './views/Event';
 import EventDetail from './views/Event-Details';
 

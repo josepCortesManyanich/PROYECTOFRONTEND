@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
+import { toast } from 'react-hot-toast';
 
 
 export default function TrainingDetail(){
     const[training, setTraining] = useState()
     const{id} = useParams()
     const[user, setUser] = useState()
-    const storedToken = localStorage.getItem()
+    //const storedToken = localStorage.getItem()
+    const navigate = useNavigate()
 
     useEffect(() =>{
         const data = async () =>{
@@ -16,7 +18,7 @@ export default function TrainingDetail(){
                 setTraining(response.data.data)
             } catch (error) {
                 console.error(error)
-                next(error)  
+                 
             }
         }
         data()
@@ -32,27 +34,27 @@ export default function TrainingDetail(){
         console.log(training)
       }
     
-    const handleUser = async(e) => {
-        e.preventDefault();
-        try {
-            const newUser = await axios.get(`http://localhost:8000/api/v1/training/addUser/${id}`,training, { headers: { Authorization: `Bearer ${storedToken}` } } )
-            navigate('/training')
-            setTraining(newTraining)
-        } catch (error) {
-            console.error(error)
-        }
-    }
+    //const handleUser = async(e) => {
+       // e.preventDefault();
+        //try {
+            //const newUser = await axios.get(`http://localhost:8000/api/v1/training/addUser/${id}`,training, { headers: { Authorization: `Bearer ${storedToken}` } } )
+           // toast.success('User added')
+          //  navigate('/training')
+           // setTraining(newUser)
+      //      console.error(error)
+       // }
+    //}
 
-    const handleUserDeleted = async(e) => {
-        e.preventDefault();
-        try {
-            const deletedUser = await axios.get(`http://localhost:8000/api/v1/training/addUser/${id}`,training, { headers: { Authorization: `Bearer ${storedToken}` } } )
-            navigate('/training')
-            setUser(deletedUser)
-        } catch (error) {
-            console.error(error)
-        }
-    }
+   //const handleUserDeleted = async(e) => {
+     //   e.preventDefault();
+       // try {
+       //     const deletedUser = await axios.get(`http://localhost:8000/api/v1/training/addUser/${id}`,training, { headers: { Authorization: `Bearer ${storedToken}` } } )
+         //   toast.success('User deleted')
+       //     setUser(deletedUser)
+       // } catch (error) {
+      //      console.error(error)
+       // }
+  //  }
  
        
 
@@ -63,8 +65,7 @@ export default function TrainingDetail(){
                 <h1>{training.name}</h1>
                 <img src={training.image} alt="" />
                 <h2>{training.date}</h2>
-                <button onChange={handleUser}>ASISTIR</button>
-                <button onChange={handleUserDeleted}> NO ASISTIR</button>
+               
             </div>   
           )}
         </div>

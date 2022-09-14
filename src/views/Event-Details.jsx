@@ -9,6 +9,7 @@ export default function EventDetail(){
     const{id} = useParams()
     const[user, setUser] = useState()
     const storedToken = localStorage.getItem()
+    const navigate = useNavigate()
 
     useEffect(() =>{
         const data = async () =>{
@@ -17,7 +18,7 @@ export default function EventDetail(){
                 setEvent(response.data.data)
             } catch (error) {
                 console.error(error)
-                next(error)  
+                  
             }
         }
         data()
@@ -30,7 +31,7 @@ export default function EventDetail(){
             [e.target.name]: e.target.value
           }
         })
-        console.log(training)
+        console.log(event)
       }
     
     const handleUser = async(e) => {
@@ -48,7 +49,7 @@ export default function EventDetail(){
     const handleUserDeleted = async(e) => {
         e.preventDefault();
         try {
-            const deletedUser = await axios.get(`http://localhost:8000/api/v1/training/addUser/${id}`,training, { headers: { Authorization: `Bearer ${storedToken}` } } )
+            const deletedUser = await axios.get(`http://localhost:8000/api/v1/training/addUser/${id}`,event, { headers: { Authorization: `Bearer ${storedToken}` } } )
             toast.success('toast deleted')
             navigate('/event')
             setUser(deletedUser)
