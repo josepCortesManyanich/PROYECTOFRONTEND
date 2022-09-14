@@ -61,7 +61,7 @@ export default function EventDetail(){
 
     return (
         <div>
-          {training && (
+          {event && (
             <div>
                 <h1>{event.name}</h1>
                 <img src={event.image} alt="" />
