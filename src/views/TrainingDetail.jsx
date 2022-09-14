@@ -65,6 +65,8 @@ export default function TrainingDetail(){
                 <h1>{training.name}</h1>
                 <img src={training.image} alt="" />
                 <h2>{training.date}</h2>
+                <button> ENTRENAR</button>
+                <button> NO ASISTIR</button>
                
             </div>   
           )}
