@@ -28,6 +28,7 @@ export default function CreateTraining(){
           const newTraining = await axios.post('http://localhost:8000/api/v1/training', training)
           toast.success('Project created successfully')
           navigate(`/training`)
+          setTraining(newTraining)
         } catch (error) {
           console.error(error);
         }

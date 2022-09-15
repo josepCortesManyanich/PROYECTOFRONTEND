@@ -17,7 +17,13 @@ export default function TrainingDetail(){
         const data = async () =>{
             try {
                 const response =  await axios.get(`http://localhost:8000/api/v1/training/${id}`)
-              setTraining(response.data.data);
+             setTraining(response.data.data);
+             console.log(training)
+             if( training.usersAttending.includes(user._id)){
+                setAttending(true)
+                console.log(setAttending)   
+             }
+             
               // KATA: si el user._id ya está en userAttending
               // Actualizo el estado
             } catch (error) {
@@ -55,6 +61,7 @@ export default function TrainingDetail(){
        try {
            const deletedUser = await axios.get(`http://localhost:8000/api/v1/training/addUser/${id}`, { headers: { Authorization: `Bearer ${storedToken}` } } )
            toast.success('User deleted')
+           setTraining(deletedUser)
        } catch (error) {
            console.error(error)
        }
@@ -69,6 +76,7 @@ export default function TrainingDetail(){
                 <h1>{training.name}</h1>
                 <img src={training.image} alt="" />
                 <h2>{training.date}</h2>
+                <p>{training.usersAttending}</p>
             {!isAttending && <button onClick={handleUser}> ENTRENAR</button>}
             {isAttending && <button onClick={handleUserDeleted}> NO ASISTIR</button>}
                

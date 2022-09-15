@@ -26,6 +26,7 @@ export default function CreateEvent(){
           const newEvent = await axios.post('http://localhost:8000/api/v1/event', event)
           toast.success('Event created successfully')
           navigate('/event')
+          setEvent(newEvent)
         } catch (error) {
           console.error(error);
         }

@@ -7,7 +7,6 @@ import { toast } from 'react-hot-toast';
 export default function EventDetail(){
     const[event, setEvent] = useState()
     const{id} = useParams()
-    const[user, setUser] = useState()
     const storedToken = localStorage.getItem()
     const navigate = useNavigate()
 
@@ -37,10 +36,10 @@ export default function EventDetail(){
     const handleUser = async(e) => {
         e.preventDefault();
         try {
-            const newUser = await axios.get(`http://localhost:8000/api/v1/event/addUser/${id}`,event, { headers: { Authorization: `Bearer ${storedToken}` } } )
+            const newUser = await axios.get(`http://localhost:8000/api/v1/event/addUser/${id}`, { headers: { Authorization: `Bearer ${storedToken}` } } )
             toast.success('User added')
             navigate('/event')
-            setUser(newUser)
+            setEvent(newUser)
         } catch (error) {
             console.error(error)
         }
@@ -49,10 +48,10 @@ export default function EventDetail(){
     const handleUserDeleted = async(e) => {
         e.preventDefault();
         try {
-            const deletedUser = await axios.get(`http://localhost:8000/api/v1/training/addUser/${id}`,event, { headers: { Authorization: `Bearer ${storedToken}` } } )
+            const deletedUser = await axios.get(`http://localhost:8000/api/v1/training/addUser/${id}`, { headers: { Authorization: `Bearer ${storedToken}` } } )
             toast.success('toast deleted')
             navigate('/event')
-            setUser(deletedUser)
+            setEvent(deletedUser)
         } catch (error) {
             console.error(error)
         }
