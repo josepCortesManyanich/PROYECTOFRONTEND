@@ -1,21 +1,25 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { toast } from 'react-hot-toast';
-
+import { AuthContext } from "../context/AuthContext";
 
 export default function TrainingDetail(){
     const[training, setTraining] = useState()
     const{id} = useParams()
-    const[user, setUser] = useState()
-    //const storedToken = localStorage.getItem()
-    const navigate = useNavigate()
+    const storedToken = localStorage.getItem('authToken')
+  const navigate = useNavigate();
+  const [isAttending, setAttending] = useState(false);
+    const { user } = useContext(AuthContext)
+
 
     useEffect(() =>{
         const data = async () =>{
             try {
                 const response =  await axios.get(`http://localhost:8000/api/v1/training/${id}`)
-                setTraining(response.data.data)
+              setTraining(response.data.data);
+              // KATA: si el user._id ya está en userAttending
+              // Actualizo el estado
             } catch (error) {
                 console.error(error)
                  
@@ -34,27 +38,27 @@ export default function TrainingDetail(){
         console.log(training)
       }
     
-    //const handleUser = async(e) => {
-       // e.preventDefault();
-        //try {
-            //const newUser = await axios.get(`http://localhost:8000/api/v1/training/addUser/${id}`,training, { headers: { Authorization: `Bearer ${storedToken}` } } )
-           // toast.success('User added')
-          //  navigate('/training')
-           // setTraining(newUser)
-      //      console.error(error)
-       // }
-    //}
+    const handleUser = async(e) => {
+       e.preventDefault();
+        try {
+            const newUser = await axios.get(`http://localhost:8000/api/v1/training/addUser/${id}`, { headers: { Authorization: `Bearer ${storedToken}` } } )
+           toast.success('User added')
+           navigate('/training')
+           setTraining(newUser)
+        } catch (error) {
+          console.error(error)
+       }
+    }
 
-   //const handleUserDeleted = async(e) => {
-     //   e.preventDefault();
-       // try {
-       //     const deletedUser = await axios.get(`http://localhost:8000/api/v1/training/addUser/${id}`,training, { headers: { Authorization: `Bearer ${storedToken}` } } )
-         //   toast.success('User deleted')
-       //     setUser(deletedUser)
-       // } catch (error) {
-      //      console.error(error)
-       // }
-  //  }
+   const handleUserDeleted = async(e) => {
+       e.preventDefault();
+       try {
+           const deletedUser = await axios.get(`http://localhost:8000/api/v1/training/addUser/${id}`, { headers: { Authorization: `Bearer ${storedToken}` } } )
+           toast.success('User deleted')
+       } catch (error) {
+           console.error(error)
+       }
+   }
  
        
 
@@ -65,8 +69,8 @@ export default function TrainingDetail(){
                 <h1>{training.name}</h1>
                 <img src={training.image} alt="" />
                 <h2>{training.date}</h2>
-                <button> ENTRENAR</button>
-                <button> NO ASISTIR</button>
+            {!isAttending && <button onClick={handleUser}> ENTRENAR</button>}
+            {isAttending && <button onClick={handleUserDeleted}> NO ASISTIR</button>}
                
             </div>   
           )}

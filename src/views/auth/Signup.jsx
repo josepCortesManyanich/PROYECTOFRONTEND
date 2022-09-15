@@ -31,9 +31,11 @@ export default function Signup() {
   }, [passwordControl])
 
   const handleSubmit = async (e) => {
+    console.log(user)
     e.preventDefault();
     try {
-      await axios.post(`http://localhost:8000/api/v1/auth/signup`, { username: user.username, email: user.email, password });
+      const res = await axios.post(`${process.env.REACT_APP_API_URL}/auth/signup`, { username: user.username, email: user.email, password });
+      console.log(res)
       navigate('/login');
     } catch (error) {
       setErrorMessage(error.response.data.error)
