@@ -13,26 +13,26 @@ export default function TrainingDetail(){
     const { user } = useContext(AuthContext)
 
 
-    useEffect(() =>{
+  useEffect(() => {
         const data = async () =>{
             try {
                 const response =  await axios.get(`http://localhost:8000/api/v1/training/${id}`)
-             setTraining(response.data.data);
-             console.log(training)
-             if( training.usersAttending.includes(user._id)){
+              setTraining(response.data.data);
+              const filtered = response.data.data.usersAttending.filter(elem => elem._id == user._id);
+              console.log(filtered);
+              console.log(training)
+              if (filtered.length > 0) {
+                console.log('User is in array')
                 setAttending(true)
-                console.log(setAttending)   
-             }
-             
-              // KATA: si el user._id ya está en userAttending
-              // Actualizo el estado
+              }
+              console.log(isAttending)
             } catch (error) {
                 console.error(error)
                  
             }
         }
         data()
-    },[id])
+    },[id, isAttending])
 
     const handleChange = (e) => {
         setTraining(prev => {
@@ -47,10 +47,9 @@ export default function TrainingDetail(){
     const handleUser = async(e) => {
        e.preventDefault();
         try {
-            const newUser = await axios.get(`http://localhost:8000/api/v1/training/addUser/${id}`, { headers: { Authorization: `Bearer ${storedToken}` } } )
+            await axios.get(`http://localhost:8000/api/v1/training/addUser/${id}`, { headers: { Authorization: `Bearer ${storedToken}` } } )
            toast.success('User added')
-           navigate('/training')
-           setTraining(newUser)
+           setAttending(true)
         } catch (error) {
           console.error(error)
        }
@@ -59,14 +58,15 @@ export default function TrainingDetail(){
    const handleUserDeleted = async(e) => {
        e.preventDefault();
        try {
-           const deletedUser = await axios.get(`http://localhost:8000/api/v1/training/addUser/${id}`, { headers: { Authorization: `Bearer ${storedToken}` } } )
+           await axios.get(`http://localhost:8000/api/v1/training/deleteUser/${id}`, { headers: { Authorization: `Bearer ${storedToken}` } } )
            toast.success('User deleted')
-           setTraining(deletedUser)
+            setAttending(false)
        } catch (error) {
            console.error(error)
        }
    }
  
+  
        
 
     return (
@@ -75,8 +75,12 @@ export default function TrainingDetail(){
             <div>
                 <h1>{training.name}</h1>
                 <img src={training.image} alt="" />
-                <h2>{training.date}</h2>
-                <p>{training.usersAttending}</p>
+            <h2>{training.date}</h2>
+            <ul>
+              {training.usersAttending && training.usersAttending.map(user => {
+                return <li key={user._id}>{user.username}</li>
+                  })}
+            </ul>
             {!isAttending && <button onClick={handleUser}> ENTRENAR</button>}
             {isAttending && <button onClick={handleUserDeleted}> NO ASISTIR</button>}
                
