@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React,{useEffect, useState} from "react";
 import { useNavigate } from "react-router-dom";
 import toast from 'react-hot-toast';
 import axios from 'axios';
@@ -11,6 +11,10 @@ export default function CreateTraining(){
         category:'',  
     })
     const navigate = useNavigate()
+
+    useEffect(() => {
+      console.log(training)
+    }, [training])
 
     const handleChange = (e) => {
         console.log(training)
@@ -38,7 +42,7 @@ export default function CreateTraining(){
         uploadData.append("imageUrl", e.target.files[0]);
         try {
           const response = await axios.post('http://localhost:8000/api/v1/training/upload', uploadData);
-          console.log(response.data.fileUrl);
+          console.log(response.data);
     
           setTraining(prev => {
             return {
@@ -62,7 +66,7 @@ export default function CreateTraining(){
         <label>Nombre</label>
         <input type="text" name="name" placeholder="Nombre" value={training.name} onChange={handleChange}/>
         <label>Imagen</label>
-        <input type="file" name="image"  value={training.image} onChange={handleFileUpload} />
+        <input type="file" name="image" onChange={handleFileUpload} />
         <label>Hora de entreno</label>
         <input type="text" name="date" placeholder="Hora " value={training.date} onChange={handleChange} />
         <label>Categoria</label>

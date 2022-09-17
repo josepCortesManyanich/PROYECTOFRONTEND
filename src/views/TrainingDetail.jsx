@@ -74,7 +74,7 @@ export default function TrainingDetail(){
           {training && (
             <div>
                 <h1>{training.name}</h1>
-                <img src={training.image} alt="" />
+                <img src={training.imageUrl} alt="" />
             <h2>{training.date}</h2>
             <ul>
               {training.usersAttending && training.usersAttending.map(user => {
