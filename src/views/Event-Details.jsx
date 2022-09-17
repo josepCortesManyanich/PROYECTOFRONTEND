@@ -1,20 +1,29 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { toast } from 'react-hot-toast';
+import { AuthContext } from '../context/AuthContext';
 
 
 export default function EventDetail(){
     const[event, setEvent] = useState()
     const{id} = useParams()
-    const storedToken = localStorage.getItem()
+    const storedToken = localStorage.getItem('authToken')
     const navigate = useNavigate()
+    const[isAttending, setAttending] = useState(false)
+    const{user} = useContext(AuthContext)
 
     useEffect(() =>{
         const data = async () =>{
             try {
                 const response =  await axios.get(`http://localhost:8000/api/v1/event/${id}`)
                 setEvent(response.data.data)
+                const filtered = response.data.data.usersAttending.filter(elem => elem._id == user._id);
+                console.log(filtered)
+              if (filtered.length > 0) {
+                console.log('User is in array')
+                setAttending(true)
+              }
             } catch (error) {
                 console.error(error)
                   
@@ -33,31 +42,27 @@ export default function EventDetail(){
         console.log(event)
       }
     
-    const handleUser = async(e) => {
+      const handleUser = async(e) => {
         e.preventDefault();
-        try {
-            const newUser = await axios.get(`http://localhost:8000/api/v1/event/addUser/${id}`, { headers: { Authorization: `Bearer ${storedToken}` } } )
+         try {
+             await axios.get(`http://localhost:8000/api/v1/event/addUser/${id}`, { headers: { Authorization: `Bearer ${storedToken}` } } )
             toast.success('User added')
-            navigate('/event')
-            setEvent(newUser)
-        } catch (error) {
-            console.error(error)
+            setAttending(true)
+         } catch (error) {
+           console.error(error)
         }
-    }
-
+     }
+ 
     const handleUserDeleted = async(e) => {
         e.preventDefault();
         try {
-            const deletedUser = await axios.get(`http://localhost:8000/api/v1/training/addUser/${id}`, { headers: { Authorization: `Bearer ${storedToken}` } } )
-            toast.success('toast deleted')
-            navigate('/event')
-            setEvent(deletedUser)
+            await axios.get(`http://localhost:8000/api/v1/event/deleteUser/${id}`, { headers: { Authorization: `Bearer ${storedToken}` } } )
+            toast.success('User deleted')
+             setAttending(false)
         } catch (error) {
             console.error(error)
         }
     }
- 
-       
 
     return (
         <div>
@@ -65,10 +70,16 @@ export default function EventDetail(){
             <div>
                 <h1>{event.name}</h1>
                 <img src={event.image} alt="" />
-                <h2>{event.date}</h2>
-                <p>{event.description}</p>
-                <button onChange={handleUser}>ASISTIR</button>
-                <button onChange={handleUserDeleted}> NO ASISTIR</button>
+            <h2>{event.date}</h2>
+            <p>{event.description}</p>
+            <ul>
+              {event.usersAttending && event.usersAttending.map(user => {
+                return <li key={user._id}>{user.username}</li>
+                  })}
+            </ul>
+            {!isAttending && <button onClick={handleUser}> ASISTIR</button>}
+            {isAttending && <button onClick={handleUserDeleted}> NO ASISTIR</button>}
+               
             </div>   
           )}
         </div>
@@ -76,3 +87,12 @@ export default function EventDetail(){
 
 
 }
+ 
+       
+
+   
+
+
+
+
+

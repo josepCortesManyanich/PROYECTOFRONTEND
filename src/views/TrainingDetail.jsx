@@ -8,8 +8,8 @@ export default function TrainingDetail(){
     const[training, setTraining] = useState()
     const{id} = useParams()
     const storedToken = localStorage.getItem('authToken')
-  const navigate = useNavigate();
-  const [isAttending, setAttending] = useState(false);
+    //const navigate = useNavigate();
+    const [isAttending, setAttending] = useState(false);
     const { user } = useContext(AuthContext)
 
 
@@ -18,7 +18,7 @@ export default function TrainingDetail(){
             try {
                 const response =  await axios.get(`http://localhost:8000/api/v1/training/${id}`)
               setTraining(response.data.data);
-              const filtered = response.data.data.usersAttending.filter(elem => elem._id == user._id);
+              const filtered = response.data.data.usersAttending.filter(elem => elem._id === user._id);
               console.log(filtered);
               console.log(training)
               if (filtered.length > 0) {
