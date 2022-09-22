@@ -19,7 +19,7 @@ import EventDetail from './views/Event-Details';
 
 function App() {
   return (
-    <div className='bg-orange-900'>
+    <div className='bg-orange-900 '>
       <Toaster/>
       <Navbar />
       <Routes>

@@ -3,6 +3,7 @@ import React, { useState, useContext } from 'react';
 import toast from 'react-hot-toast';
 import { AuthContext } from '../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import logo from '../../images/LOGO.jpg'
 
 export default function Login() {
   const { storeToken, authenticateUser } = useContext(AuthContext);
@@ -45,6 +46,7 @@ export default function Login() {
         {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
         <button className='inline-flex items-center px-3.5 py-2 border border-transparent uppercase tracking-wide text-xl font-bold mb-2 text-white bg-red-700' type="submit">ENTRAR </button>
       </form>
+      <img src={logo} alt=''/>
     </div>
   )
 }

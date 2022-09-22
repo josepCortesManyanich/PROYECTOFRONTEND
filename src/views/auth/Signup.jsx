@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import Logo from '../images/LOGO.jpg'
+import Logo from '../../images/LOGO.jpg'
 
 export default function Signup() {
   const [user, setUser] = useState({
@@ -79,7 +79,7 @@ export default function Signup() {
             className='inline-flex items-center px-3.5 py-2 border border-transparent uppercase tracking-wide text-xl font-bold mb-2 text-white bg-red-700 hover:bg-red-700 ' 
             type="submit">Registrate</button>
       </form>
-     <img src= {Logo} alt=''></img>
+     <img src= {Logo} alt='' width='100%'/>
     </div>
   )
 }
