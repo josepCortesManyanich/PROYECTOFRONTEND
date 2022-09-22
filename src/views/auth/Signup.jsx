@@ -41,20 +41,21 @@ export default function Signup() {
       setErrorMessage(error.response.data.error)
     }
   }
+  
 
   return (
-    <div>
+    <div className="md:w-1/2 px-3 mb-6 md:mb-0">
       <form onSubmit={handleSubmit}>
-        <label>Username</label>
-        <input required type="text" name="username" value={user.username} onChange={handleChange} />
-        <label>Email</label>
-        <input required type="email" name="email" value={user.email} onChange={handleChange} />
-        <label>Password</label>
-        <input required type="password" name="password" value={password} onChange={(e) => setPassword(e.target.value) } />
-        <label>Repeat the password</label>
-        <input required type="password" name="passwordControl" value={passwordControl} onChange={(e) => setPasswordControl(e.target.value)} />
-        {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
-        <button type="submit">Register</button>
+        <label className="uppercase tracking-wide text-red-700 text-xl font-bold mb-2">Username:</label>
+        <input className="mb-3 w-full rounded-lg border shadow-xl h-12 pl-4 "required type="text" name="username" value={user.username} onChange={handleChange} />
+        <label className="uppercase tracking-wide text-red-700 text-xl font-bold mb-2">Email:</label>
+        <input className="mb-3 w-full rounded-lg border shadow-xl h-12 pl-4 "required type="email" name="email" value={user.email} onChange={handleChange} />
+        <label className="uppercase tracking-wide text-red-700 text-xl font-bold mb-2">Password:</label>
+        <input className="mb-3 w-full rounded-lg border shadow-xl h-12 pl-4 "required type="password" name="password" value={password} onChange={(e) => setPassword(e.target.value) } />
+        <label className="uppercase tracking-wide text-red-700 text-xl font-bold mb-2">Repeat the password:</label>
+        <input className="mb-3 w-full rounded-lg border shadow-xl h-12 pl-4 " required type="password" name="passwordControl" value={passwordControl} onChange={(e) => setPasswordControl(e.target.value)} />
+        {errorMessage && <p className="uppercase tracking-wide text-red-700 text-xl font-bold mb-2">{errorMessage}</p>}
+        <button className='inline-flex items-center px-3.5 py-2 border border-transparent uppercase tracking-wide text-xl font-bold mb-2 text-white bg-red-700 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2' type="submit">Register</button>
       </form>
     </div>
   )
