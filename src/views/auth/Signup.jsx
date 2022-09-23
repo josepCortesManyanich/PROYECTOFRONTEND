@@ -73,9 +73,9 @@ export default function Signup() {
             name="username" 
             value={user.username} 
             onChange={handleChange} />
-        <label className="uppercase tracking-wide text-red-700 text-xl font-bold mb-2">Email:</label>
-        <label>Imagen</label>
+        <label className="uppercase tracking-wide text-red-700 text-xl font-bold mb-2">Imagen</label>
         <input type="file" name="image" onChange={handleFileUpload} />
+        <label className="uppercase tracking-wide text-red-700 text-xl font-bold mb-2">Email:</label>
         <input 
             className="mb-3 w-full rounded-lg border shadow-xl h-12 pl-4 "
             required type="email"

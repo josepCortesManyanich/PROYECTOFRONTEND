@@ -20,7 +20,7 @@ export default function TrainingDetail(){
               setTraining(response.data.data);
               const filtered = response.data.data.usersAttending.filter(elem => elem._id === user._id);
               console.log(filtered);
-              console.log(training)
+              console.log(response.data.data)
               if (filtered.length > 0) {
                 console.log('User is in array')
                 setAttending(true)
@@ -77,8 +77,8 @@ export default function TrainingDetail(){
                 <img src={training.imageUrl} alt="" />
             <h2>{training.date}</h2>
             <ul>
-              {training.usersAttending && training.usersAttending.map(user => {
-                return <li key={user._id}>{user.username}</li>
+              {training && training.usersAttending.map(user => {
+                return <li key={user._id}><img src={user.imageUrl} alt={user.username}/></li>
                   })}
             </ul>
             {!isAttending && <button onClick={handleUser}> ENTRENAR</button>}
