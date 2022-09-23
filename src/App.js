@@ -1,8 +1,11 @@
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
+import { useContext } from 'react';
 import { Toaster } from 'react-hot-toast';
 import Home from './views/Home';
-import Navbar from './components/Navbar';
+import Navbar1 from './components/Navbar1';
+import Navbar2 from './components/Navbar2';
+// import Navbar from './components/Navbar';
 import ErrorPage from './views/ErrorPage';
 import Signup from './views/auth/Signup';
 import Login from './views/auth/Login';
@@ -14,14 +17,18 @@ import CreateEvent from './views/Create-Event';
 import TrainingDetail from './views/TrainingDetail';
 import Event from './views/Event';
 import EventDetail from './views/Event-Details';
+import { AuthContext } from './context/AuthContext';
 
 
 
 function App() {
+  const { isLoggedIn } = useContext(AuthContext)
   return (
-    <div className='bg-orange-900 '>
+   <>
       <Toaster/>
-      <Navbar />
+      {isLoggedIn ? <IsPrivate><Navbar2 /></IsPrivate> : <Navbar1 />}
+
+      {/* <Navbar /> */}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/signup" element={<Signup />} />
@@ -35,7 +42,8 @@ function App() {
         <Route path="/event/:id" element={<EventDetail/>}/>
         <Route path="*" element={<ErrorPage />} />
       </Routes>
-    </div>
+    </> 
+   
   );
 }
 

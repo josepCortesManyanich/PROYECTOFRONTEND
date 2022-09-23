@@ -6,7 +6,8 @@ import Logo from '../../images/LOGO.jpg'
 export default function Signup() {
   const [user, setUser] = useState({
     username: '',
-    email: ''
+    email: '',
+    imageUrl:'',
   })
   const [password, setPassword] = useState('');
   const [passwordControl, setPasswordControl] = useState('');
@@ -35,11 +36,29 @@ export default function Signup() {
     console.log(user)
     e.preventDefault();
     try {
-      const res = await axios.post(`${process.env.REACT_APP_API_URL}/auth/signup`, { username: user.username, email: user.email, password });
+      const res = await axios.post(`${process.env.REACT_APP_API_URL}/auth/signup`, { username: user.username, email: user.email, password, imageUrl: user.imageUrl });
       console.log(res)
       navigate('/login');
     } catch (error) {
       setErrorMessage(error.response.data.error)
+    }
+  }
+  const handleFileUpload = async(e) => {
+    const uploadData = new FormData();
+    uploadData.append("imageUrl", e.target.files[0]);
+    try {
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}/auth/upload`, uploadData);
+      console.log(response)
+
+      setUser(prev => {
+        return {
+          ...prev,
+          imageUrl: response.data.fileUrl
+        }
+      })
+    }
+    catch(error){
+      console.error(error)
     }
   }
   
@@ -55,6 +74,8 @@ export default function Signup() {
             value={user.username} 
             onChange={handleChange} />
         <label className="uppercase tracking-wide text-red-700 text-xl font-bold mb-2">Email:</label>
+        <label>Imagen</label>
+        <input type="file" name="image" onChange={handleFileUpload} />
         <input 
             className="mb-3 w-full rounded-lg border shadow-xl h-12 pl-4 "
             required type="email"
