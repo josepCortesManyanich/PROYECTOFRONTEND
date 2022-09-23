@@ -37,7 +37,7 @@ export default function Login() {
   }
 
   return (
-    <div className="md:w-1/2 px-3 mb-6 md:mb-0">
+    <div className="md:w-1/2 h-max px-3 mb-6 md:mb-0">
       <form onSubmit={handleSubmit}>
         <label className="uppercase tracking-wide text-red-700 text-xl font-bold mb-2">Email:</label>
         <input className="mb-3 w-full rounded-lg border shadow-xl h-12 pl-4 "required type="email" name="email" value={user.email} onChange={handleChange} />

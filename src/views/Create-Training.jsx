@@ -71,10 +71,10 @@ export default function CreateTraining(){
         <input type="text" name="date" placeholder="Hora " value={training.date} onChange={handleChange} />
         <label>Categoria</label>
         <select id="category" name="category" value={training.category} onChange={handleChange}>
-            <option value="pads">Pads</option>
-            <option value="airbyke">Air Byke</option>
-            <option value="tabata">Tabata</option>
-            <option value="sparring">Sparring</option>
+            <option value="pads">pads</option>
+            <option value="airbyke">airbyke</option>
+            <option value="tabata">tabata</option>
+            <option value="sparring">sparring</option>
         </select>              
         <button type="submit">Save</button>
       </form>

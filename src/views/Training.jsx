@@ -21,7 +21,7 @@ export default function Training() {
         <div>
             <h3>Trainings</h3>
             {training&& training.map(elem =>{
-                return <div key={elem._id}><Link to={`${elem._id}`}><img src={elem.image} alt=""/>{elem.name}</Link></div>
+                return <div key={elem._id}><Link to={`${elem._id}`}><img src={elem.imageUrl} alt=""/></Link></div>
             })}
             <Outlet/>
         </div>
