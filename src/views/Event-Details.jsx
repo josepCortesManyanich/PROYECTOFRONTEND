@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { toast } from 'react-hot-toast';
 import { AuthContext } from '../context/AuthContext';
@@ -9,7 +9,6 @@ export default function EventDetail(){
     const[event, setEvent] = useState()
     const{id} = useParams()
     const storedToken = localStorage.getItem('authToken')
-    const navigate = useNavigate()
     const[isAttending, setAttending] = useState(false)
     const{user} = useContext(AuthContext)
 
@@ -18,10 +17,8 @@ export default function EventDetail(){
             try {
                 const response =  await axios.get(`http://localhost:8000/api/v1/event/${id}`)
                 setEvent(response.data.data)
-                const filtered = response.data.data.usersAttending.filter(elem => elem._id == user._id);
-                console.log(filtered)
+                const filtered = response.data.data.usersAttending.filter(elem => elem._id === user._id);
               if (filtered.length > 0) {
-                console.log('User is in array')
                 setAttending(true)
               }
             } catch (error) {
@@ -32,15 +29,7 @@ export default function EventDetail(){
         data()
     },[id])
 
-    const handleChange = (e) => {
-        setEvent(prev => {
-          return {
-            ...prev,
-            [e.target.name]: e.target.value
-          }
-        })
-        console.log(event)
-      }
+   
     
       const handleUser = async(e) => {
         e.preventDefault();

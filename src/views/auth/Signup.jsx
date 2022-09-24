@@ -37,7 +37,6 @@ export default function Signup() {
     e.preventDefault();
     try {
       const res = await axios.post(`${process.env.REACT_APP_API_URL}/auth/signup`, { username: user.username, email: user.email, password, imageUrl: user.imageUrl });
-      console.log(res)
       navigate('/login');
     } catch (error) {
       setErrorMessage(error.response.data.error)
@@ -48,8 +47,6 @@ export default function Signup() {
     uploadData.append("imageUrl", e.target.files[0]);
     try {
       const response = await axios.post(`${process.env.REACT_APP_API_URL}/auth/upload`, uploadData);
-      console.log(response)
-
       setUser(prev => {
         return {
           ...prev,

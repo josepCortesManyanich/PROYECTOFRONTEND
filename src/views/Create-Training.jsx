@@ -13,11 +13,11 @@ export default function CreateTraining(){
     const navigate = useNavigate()
 
     useEffect(() => {
-      console.log(training)
+      
     }, [training])
 
     const handleChange = (e) => {
-        console.log(training)
+       
         setTraining(prev => {
           return {
             ...prev,
@@ -42,8 +42,7 @@ export default function CreateTraining(){
         uploadData.append("imageUrl", e.target.files[0]);
         try {
           const response = await axios.post('http://localhost:8000/api/v1/training/upload', uploadData);
-          console.log(response.data);
-    
+          
           setTraining(prev => {
             return {
               ...prev,
@@ -60,23 +59,23 @@ export default function CreateTraining(){
     
 
     return(
-        <div>
-      <form onSubmit={handleSubmit}>
+        <div className="md:w-1/2 px-3 mb-6 md:mb-0">
+      <form className= "h-100 flex flex-col align-center justify-around mt-3" onSubmit={handleSubmit}>
 
-        <label>Nombre</label>
-        <input type="text" name="name" placeholder="Nombre" value={training.name} onChange={handleChange}/>
-        <label>Imagen</label>
-        <input type="file" name="image" onChange={handleFileUpload} />
-        <label>Hora de entreno</label>
-        <input type="text" name="date" placeholder="Hora " value={training.date} onChange={handleChange} />
-        <label>Categoria</label>
-        <select id="category" name="category" value={training.category} onChange={handleChange}>
-            <option value="pads">pads</option>
-            <option value="airbyke">airbyke</option>
-            <option value="tabata">tabata</option>
-            <option value="sparring">sparring</option>
+        <label className="uppercase tracking-wide text-red-700 text-xl font-bold mb-2">Nombre</label>
+        <input className="mb-3 w-full rounded-lg border shadow-xl h-12 pl-4 " type="text" name="name" placeholder="Nombre" value={training.name} onChange={handleChange}/>
+        <label className="uppercase tracking-wide text-red-700 text-xl font-bold mb-2">Imagen</label>
+        <input  type="file" name="image" onChange={handleFileUpload} />
+        <label className="uppercase tracking-wide text-red-700 text-xl font-bold mb-2">Hora de entreno</label>
+        <input className="mb-3 w-full rounded-lg border shadow-xl h-12 pl-4 " type="text" name="date" placeholder="Hora " value={training.date} onChange={handleChange} />
+        <label className="uppercase tracking-wide text-red-700 text-xl font-bold mb-2">Categoria</label>
+        <select className="mb-3 w-full rounded-lg border shadow-xl h-12 pl-4 " id="category" name="category" value={training.category} onChange={handleChange}>
+            <option className="uppercase tracking-wide text-red-700 text-lg font-bold mb-2" value="pads">Paos</option>
+            <option className="uppercase tracking-wide text-red-700 text-lg font-bold mb-2" value="airbyke">AirByke</option>
+            <option className="uppercase tracking-wide text-red-700 text-lg font-bold mb-2" value="tabata">Tabata</option>
+            <option className="uppercase tracking-wide text-red-700 text-lg font-bold mb-2" value="sparring">Sparring</option>
         </select>              
-        <button type="submit">Save</button>
+        <button  className='inline-flex items-center px-3.5 py-2 border border-transparent uppercase tracking-wide text-xl font-bold mb-2 text-white bg-red-700 hover:bg-red-700 '  type="submit">Save</button>
       </form>
       </div>
     )

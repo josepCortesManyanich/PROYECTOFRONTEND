@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {Link, Outlet} from "react-router-dom";
+import {Link} from "react-router-dom";
 import axios from "axios";
 
 export default function Event() {
@@ -22,7 +22,6 @@ export default function Event() {
             {event&& event.map(elem =>{
                 return <p key= {elem._id}><Link to={`${elem._id}`}><img src={elem.image} alt=""/>{elem.name}</Link></p> 
             })}
-            <Outlet/>
         </div>
     )
 

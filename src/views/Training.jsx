@@ -22,7 +22,7 @@ export default function Training() {
             className="col-span-1 flex flex-col divide-y divide-gray-200 rounded-lg bg-white text-center shadow"
           >
             <div className="flex flex-1 flex-col p-8">
-            <Link to={`${elem._id}`}><img className="mx-auto h-32 w-32 flex-shrink-0 rounded-full" src={elem.imageUrl} alt="Training image" /></Link>
+            <Link to={`${elem._id}`}><img className="mx-auto h-32 w-32 flex-shrink-0 rounded-full" src={elem.imageUrl} alt="" /></Link>
               <h3 className="mt-6 text-sm font-medium text-gray-900">{elem.name}</h3>
             </div>
           </li>

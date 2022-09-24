@@ -48,26 +48,26 @@ export default function TrainingDetail(){
         <>
         {training && 
         <>
-        <h1>{training.name}</h1>
+        <h1 className="uppercase tracking-wide text-red-700 text-xl font-bold mb-2">{training.name}</h1>
         <img src={training.imageUrl} alt="" />
-    <h2>{training.date}</h2></>}
-        <ul role="list" className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-      {training && training.usersAttending.map((person) => (
+        <h2 className="uppercase tracking-wide text-red-700 text-xl font-bold mb-2">{training.date}</h2></>}
+        <ul className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+      {training && training.usersAttending.map((elem) => (
         <li
-          key={person._id}
+          key={elem._id}
           className="col-span-1 flex flex-col divide-y divide-gray-200 rounded-lg bg-white text-center shadow"
         >
           <div className="flex flex-1 flex-col p-8">
-            <img className="mx-auto h-32 w-32 flex-shrink-0 rounded-full" src={person.imageUrl} alt="" />
-            <h3 className="mt-6 text-sm font-medium text-gray-900">{person.username}</h3>
+            <img className="mx-auto h-32 w-32 flex-shrink-0 rounded-full" src={elem.imageUrl} alt="" />
+            <h3 className="mt-6 text-sm font-medium text-gray-900">{elem.username}</h3>
           </div>
           <div>
           </div>
         </li>
       ))}
     </ul>
-    {!isAttending && <button onClick={handleUser}> ENTRENAR</button>}
-    {isAttending && <button onClick={handleUserDeleted}> NO ASISTIR</button>}
+    {!isAttending && <button className='mx-auto items-center px-3.5 py-2 border border-transparent uppercase tracking-wide text-xl font-bold mb-2 text-white bg-red-700 hover:bg-red-700 ' onClick={handleUser}> ENTRENAR</button>}
+    {isAttending && <button className='mx-auto items-center px-3.5 py-2 border border-transparent uppercase tracking-wide text-xl font-bold mb-2 text-white bg-red-700 hover:bg-red-700 ' onClick={handleUserDeleted}> NO ASISTIR</button>}
     </>
       )
 }
