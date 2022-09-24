@@ -36,14 +36,15 @@ export default function CreateEvent(){
     
 
     return(
-        <div>
-      <form onSubmit={handleSubmit}>
+        <div className="md:w-1/2 px-3 mb-6 md:mb-0">
+      <form className= "h-100 flex flex-col align-center justify-around mt-3" onSubmit={handleSubmit}>
 
-        <label>Nombre</label>
-        <input type="text" name="name" placeholder="Nombre" value={event.name} onChange={handleChange}/>
-        <input type="text" name="image" placeholder="URL de la imagen " value={event.image} onChange={handleChange} />
-        <label>Hora del evento</label>
-        <input type="text" name="date" placeholder="Hora " value={event.date} onChange={handleChange} />
+        <label className="uppercase tracking-wide text-red-700 text-xl font-bold mb-2">Nombre</label>
+        <input className="mb-3 w-full rounded-lg border shadow-xl h-12 pl-4 " type="text" name="name" placeholder="Nombre" value={event.name} onChange={handleChange}/>
+        <input className="mb-3 w-full rounded-lg border shadow-xl h-12 pl-4 " type="text" name="image" placeholder="URL de la imagen " value={event.image} onChange={handleChange} />
+        <label className="uppercase tracking-wide text-red-700 text-xl font-bold mb-2">Hora del evento</label>
+        <input className="mb-3 w-full rounded-lg border shadow-xl h-12 pl-4 " type="text" name="date" placeholder="Hora " value={event.date} onChange={handleChange} />
+        <button  className='inline-flex items-center px-3.5 py-2 border border-transparent uppercase tracking-wide text-xl font-bold mb-2 text-white bg-red-700 hover:bg-red-700 '  type="submit">CREAR</button>
         </form>
         </div>
         )

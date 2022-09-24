@@ -3,12 +3,14 @@ import {useParams } from 'react-router-dom';
 import axios from 'axios';
 import { toast } from 'react-hot-toast';
 import { AuthContext } from "../context/AuthContext";
+
 export default function TrainingDetail(){
     const[training, setTraining] = useState()
     const{id} = useParams()
     const storedToken = localStorage.getItem('authToken')
     const [isAttending, setAttending] = useState(false);
     const { user } = useContext(AuthContext)
+
   useEffect(() => {
         const data = async () =>{
             try {
@@ -23,7 +25,11 @@ export default function TrainingDetail(){
             }
         }
         data()
-    },[id, isAttending])
+    },[id, isAttending, user._id])
+
+    useEffect(()=>{
+      console.log(training)
+    },[training] )
     const handleUser = async(e) => {
        e.preventDefault();
         try {

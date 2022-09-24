@@ -27,7 +27,7 @@ export default function EventDetail(){
             }
         }
         data()
-    },[id])
+    },[id,user._id])
 
    
     

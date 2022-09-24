@@ -29,14 +29,14 @@ export default function Signup() {
     } else {
       setErrorMessage(undefined)
     }
-    
+     // eslint-disable-next-line
   }, [passwordControl])
 
   const handleSubmit = async (e) => {
     console.log(user)
     e.preventDefault();
     try {
-      const res = await axios.post(`${process.env.REACT_APP_API_URL}/auth/signup`, { username: user.username, email: user.email, password, imageUrl: user.imageUrl });
+      await axios.post(`${process.env.REACT_APP_API_URL}/auth/signup`, { username: user.username, email: user.email, password, imageUrl: user.imageUrl });
       navigate('/login');
     } catch (error) {
       setErrorMessage(error.response.data.error)

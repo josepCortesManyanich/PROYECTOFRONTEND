@@ -1,13 +1,19 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { useNavigate, NavLink } from 'react-router-dom';
 import { Disclosure } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { AuthContext } from '../context/AuthContext';
 import { useContext } from 'react';
 export default function NavBarUser() {
   const { logOutUser } = useContext(AuthContext);
+  const navigate = useNavigate()
+
+  const logOut = () => {
+      logOutUser();
+      navigate('/login')
+  }
   return (
-    <Disclosure as="nav" className="bg-white shadow">
+    <Disclosure as="nav" className="bg-red-600">
       {({ open }) => (
         <>
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -39,7 +45,7 @@ export default function NavBarUser() {
                     EVENTO
                   </NavLink>
                   <button
-                    onClick={() => logOutUser()}
+                    onClick={() => logOut()}
                     className="inline-flex items-center border-b-2 border-indigo-500 px-1 pt-1 text-sm font-medium text-gray-900"
                   >
                     LOGOUT

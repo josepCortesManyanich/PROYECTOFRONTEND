@@ -75,7 +75,7 @@ export default function CreateTraining(){
             <option className="uppercase tracking-wide text-red-700 text-lg font-bold mb-2" value="tabata">Tabata</option>
             <option className="uppercase tracking-wide text-red-700 text-lg font-bold mb-2" value="sparring">Sparring</option>
         </select>              
-        <button  className='inline-flex items-center px-3.5 py-2 border border-transparent uppercase tracking-wide text-xl font-bold mb-2 text-white bg-red-700 hover:bg-red-700 '  type="submit">Save</button>
+        <button  className='inline-flex items-center px-3.5 py-2 border border-transparent uppercase tracking-wide text-xl font-bold mb-2 text-white bg-red-700 hover:bg-red-700 '  type="submit">CREAR</button>
       </form>
       </div>
     )
