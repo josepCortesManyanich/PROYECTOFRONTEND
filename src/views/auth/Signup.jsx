@@ -99,5 +99,5 @@ export default function Signup() {
       </form>
      <img src= {Logo} alt='' width='100%'/>
     </div>
-  )
+  ) 
 }
