@@ -2,7 +2,7 @@ import './App.css';
 import { Routes, Route } from 'react-router-dom';
 import { useContext } from 'react';
 import { Toaster } from 'react-hot-toast';
-import Home from './views/Home';
+import Home from './views/Home ';
 import Navbar1 from './components/Navbar1';
 import Navbar2 from './components/Navbar2';
 // import Navbar from './components/Navbar';

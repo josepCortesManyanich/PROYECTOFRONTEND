@@ -28,8 +28,8 @@ export default function TrainingDetail(){
     },[id, isAttending, user._id])
 
     useEffect(()=>{
-      console.log(training)
     },[training] )
+    
     const handleUser = async(e) => {
        e.preventDefault();
         try {
