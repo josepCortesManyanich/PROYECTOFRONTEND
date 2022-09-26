@@ -20,7 +20,7 @@ export default function Event() {
     return(
         <div>
             {event&& event.map(elem =>{
-                return <p key= {elem._id}><Link to={`${elem._id}`}><img src={elem.image} alt=""/>{elem.name}</Link></p> 
+                return <p key= {elem._id}><Link to={`${elem._id}`}><img src={elem.imageUrl} alt=""/>{elem.name}</Link></p> 
             })}
         </div>
     )
