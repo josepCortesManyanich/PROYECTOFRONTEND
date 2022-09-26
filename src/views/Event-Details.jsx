@@ -27,10 +27,11 @@ export default function EventDetail(){
             }
         }
         data()
-    },[id,user._id])
-
-   
+    },[id,isAttending,user._id])
     
+    useEffect(()=>{
+    },[event] )
+
       const handleUser = async(e) => {
         e.preventDefault();
          try {
@@ -58,7 +59,7 @@ export default function EventDetail(){
       {event && 
       <>
       <h1 className="uppercase tracking-wide text-red-700 text-xl font-bold mb-2">{event.name}</h1>
-      <img  src={event.imageUrl} alt="" />
+      <img src={event.imageUrl} alt="" />
       <h2 className="uppercase tracking-wide text-red-700 text-xl font-bold mb-2">{event.date}</h2></>}
       <ul className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
     {event && event.usersAttending.map((elem) => (
@@ -78,8 +79,8 @@ export default function EventDetail(){
   {!isAttending && <button className='mx-auto items-center px-3.5 py-2 border border-transparent uppercase tracking-wide text-xl font-bold mb-2 text-white bg-red-700 hover:bg-red-700 ' onClick={handleUser}> ENTRENAR</button>}
   {isAttending && <button className='mx-auto items-center px-3.5 py-2 border border-transparent uppercase tracking-wide text-xl font-bold mb-2 text-white bg-red-700 hover:bg-red-700 ' onClick={handleUserDeleted}> NO ASISTIR</button>}
   </>
-         
-      )
+    )
+      
 
 
 }
@@ -91,4 +92,8 @@ export default function EventDetail(){
 
 
 
+    
 
+  
+
+       
