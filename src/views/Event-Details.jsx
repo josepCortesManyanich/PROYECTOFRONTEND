@@ -68,7 +68,7 @@ export default function EventDetail(){
         className="col-span-1 flex flex-col divide-y divide-gray-200 rounded-lg bg-white text-center shadow"
       >
         <div className="flex flex-1 flex-col p-8">
-          <img className="mx-auto h-50 w-50 flex-shrink-0 rounded-full" src={elem.imageUrl} alt="" />
+          <img className="mx-auto h-50 w-50 flex-shrink-0 " src={elem.imageUrl} alt="" />
           <h3 className="mt-6 text-sm font-medium text-gray-900">{elem.username}</h3>
         </div>
         <div>
