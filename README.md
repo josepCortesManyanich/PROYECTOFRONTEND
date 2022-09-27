@@ -4,7 +4,7 @@
 
 This application is called PURO-FIGHTERS. It is used for make an order in all the fighters of the Puro
 
-> ![](../src/images/LOGO.jpg)
+> ![](../PROYECTOFRONTEND/src/images/LOGO.jpg)
 
 
 
