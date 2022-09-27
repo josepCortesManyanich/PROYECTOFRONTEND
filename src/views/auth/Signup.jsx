@@ -61,7 +61,8 @@ export default function Signup() {
   
 
   return (
-    <div className="md:w-1/2 px-3 mb-6 md:mb-0">
+    <div className="relative mx-auto flex max-w-3xl flex-col items-center py-32 px-6 text-center sm:py-64 lg:px-0">
+   
       <form className= "h-100 flex flex-col align-center justify-around mt-3"onSubmit={handleSubmit}>
         <label className="uppercase tracking-wide text-red-700 text-xl font-bold mb-2">Nombre de usuario:</label>
         <input 
@@ -98,6 +99,7 @@ export default function Signup() {
             type="submit">Registrate</button>
       </form>
      <img src= {Logo} alt='' width='100%'/>
+   
     </div>
   ) 
 }

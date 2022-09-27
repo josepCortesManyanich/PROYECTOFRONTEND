@@ -1,6 +1,8 @@
 import React, {useEffect, useState } from "react";
 import {Link} from "react-router-dom";
 import axios from "axios";
+import Logo from '../images/LOGO.jpg'
+
 export default function Training() {
     const [training, setTraining] = useState(null);
     useEffect(() =>{
@@ -27,6 +29,8 @@ export default function Training() {
             </div>
           </li>
         ))}
+        <img className="h-full w-full object-cover object-center"src={Logo} alt=""/>
       </ul>
+      
     )
 }
