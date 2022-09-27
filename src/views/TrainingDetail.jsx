@@ -51,11 +51,12 @@ export default function TrainingDetail(){
        }
    }
     return (
+      <div className="relative mx-auto flex max-w-3xl flex-col items-center py-32 px-6 text-center sm:py-64 lg:px-0">
         <>
         {training && 
         <>
         <h1 className="uppercase tracking-wide text-red-700 text-xl font-bold mb-2">{training.name}</h1>
-        <img src={training.imageUrl} alt="" />
+        <img  src={training.imageUrl} alt="" />
         <h2 className="uppercase tracking-wide text-red-700 text-xl font-bold mb-2">{training.date}</h2></>}
         <ul className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
       {training && training.usersAttending.map((elem) => (
@@ -75,5 +76,6 @@ export default function TrainingDetail(){
     {!isAttending && <button className='mx-auto items-center px-3.5 py-2 border border-transparent uppercase tracking-wide text-xl font-bold mb-2 text-white bg-red-700 hover:bg-red-700 ' onClick={handleUser}> ENTRENAR</button>}
     {isAttending && <button className='mx-auto items-center px-3.5 py-2 border border-transparent uppercase tracking-wide text-xl font-bold mb-2 text-white bg-red-700 hover:bg-red-700 ' onClick={handleUserDeleted}> NO ASISTIR</button>}
     </>
+    </div>
       )
 }
