@@ -17,6 +17,7 @@ import CreateEvent from './views/Create-Event';
 import TrainingDetail from './views/TrainingDetail';
 import Event from './views/Event';
 import EventDetail from './views/Event-Details';
+import Profile from './views/Profile';
 import { AuthContext } from './context/AuthContext';
 
 
@@ -34,6 +35,7 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route path="/private" element={<IsPrivate><PrivateView/></IsPrivate>}/>
+        <Route path='/profile' element={<IsPrivate><Profile/></IsPrivate>}/>
         <Route path="/training" element={<Training/>}/>
         <Route path="/training/create" element={<CreateTraining/>}/>
         <Route path="/training/:id" element={<TrainingDetail/>}/>
