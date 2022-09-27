@@ -51,6 +51,7 @@ export default function TrainingDetail(){
            console.error(error)
        }
    }
+ 
     return (
       <div className="relative mx-auto flex max-w-3xl flex-col items-center py-32 px-6 text-center sm:py-64 lg:px-0">
         <>
@@ -77,6 +78,10 @@ export default function TrainingDetail(){
     {!isAttending && <button className='mx-auto items-center px-3.5 py-2 border border-transparent uppercase tracking-wide text-xl font-bold mb-2 text-white bg-red-700 hover:bg-red-700 ' onClick={handleUser}> ENTRENAR</button>}
     {isAttending && <button className='mx-auto items-center px-3.5 py-2 border border-transparent uppercase tracking-wide text-xl font-bold mb-2 text-white bg-red-700 hover:bg-red-700 ' onClick={handleUserDeleted}> NO ASISTIR</button>}
     </>
+    <form>
+      <label></label>
+      <input type="text" />
+    </form>
     <img className="h-full w-full object-cover object-center"src={Logo} alt=""/>
     </div>
       )

@@ -7,8 +7,8 @@ import { useContext } from 'react';
 export default function NavBarUser() {
   const { logOutUser } = useContext(AuthContext);
   const navigate = useNavigate()
-
-  const logOut = () => {
+ 
+  const logOut= () => {
       logOutUser();
       navigate('/login')
   }
@@ -106,8 +106,15 @@ export default function NavBarUser() {
               >
                 ORGANIZAR EVENTO
               </Disclosure.Button>
+              <Disclosure.Button
+                as="a"
+                href="/profile"
+                className="block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700"
+              >
+                EDITAR PERFIL
+              </Disclosure.Button>
               <button
-                    onClick={() => logOutUser()}
+                    onClick={() => logOut()}
                     className="block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700"
                   >
                     SALIR
