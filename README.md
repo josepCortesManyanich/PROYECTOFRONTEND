@@ -2,7 +2,7 @@
 
 ## Description
 
-This application is called XXX. It is used for ...
+This application is called PURO-FIGHTERS. It is used for make an order in all the fighters of the Puro Impacto clubs.
 
 > Add a picture (logo, design, actual screen, gif, etc, whichever you prefer.)
 ![](picture.png)
@@ -31,17 +31,18 @@ npm run start
 - User can login
 - User can log out
 
+
 ### Backlog
 
-- User can ...
-
+- User can be added in a training, and can be deleted of the training.
+- User can be added in an event, and can be deleted of the event.
 ---
 
 ## Useful links
 
-- [Presentation slides]()
-- [Backend repository]()
-- [Backend deploy]()
-- [Deployed app]()
+- [https://slides.com/josepcortes/minimal/edit]()
+- [https://github.com/josepCortesManyanich/FINALPROJECT]()
+- [https://dashboard.heroku.com/apps/impacto-training/settings]()
+- [https://puro-fighters.netlify.app/]()
 
 
