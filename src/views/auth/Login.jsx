@@ -42,11 +42,14 @@ export default function Login() {
       <form onSubmit={handleSubmit}>
         <label className="uppercase tracking-wide text-red-700 text-xl font-bold mb-2">Email:</label>
         <input className="mb-3 w-full rounded-lg border shadow-xl h-12 pl-4 "required type="email" name="email" value={user.email} onChange={handleChange} />
+        <br/>
         <label className="uppercase tracking-wide text-red-700 text-xl font-bold mb-2">Contraseña:</label>
         <input className="mb-3 w-full rounded-lg border shadow-xl h-12 pl-4 "required type="password" name="password" value={user.password} onChange={handleChange} />
+        <br/>
         {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
         <button className='inline-flex items-center px-3.5 py-2 border border-transparent uppercase tracking-wide text-xl font-bold mb-2 text-white bg-red-700' type="submit">ENTRAR </button>
       </form>
+      <br/>
       <img src={logo} alt=''/>
     </div>
     </div>

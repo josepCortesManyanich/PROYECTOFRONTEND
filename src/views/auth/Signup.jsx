@@ -71,8 +71,10 @@ export default function Signup() {
             name="username" 
             value={user.username} 
             onChange={handleChange} />
+      <br/>
         <label className="uppercase tracking-wide text-red-700 text-xl font-bold mb-2">Imagen</label>
         <input type="file" name="image" onChange={handleFileUpload} />
+      <br/>
         <label className="uppercase tracking-wide text-red-700 text-xl font-bold mb-2">Email:</label>
         <input 
             className="mb-3 w-full rounded-lg border shadow-xl h-12 pl-4 "
@@ -80,6 +82,7 @@ export default function Signup() {
             name="email" 
             value={user.email} 
             onChange={handleChange} />
+      <br/>     
         <label className="uppercase tracking-wide text-red-700 text-xl font-bold mb-2">Contraseña:</label>
         <input 
             className="mb-3 w-full rounded-lg border shadow-xl h-12 pl-4 "
@@ -87,12 +90,14 @@ export default function Signup() {
             name="password" 
             value={password} 
             onChange={(e) => setPassword(e.target.value) } />
+      <br/>     
         <label className="uppercase tracking-wide text-red-700 text-xl font-bold mb-2">Repite la contraseña:</label>
         <input 
             className="mb-3 w-full rounded-lg border shadow-xl h-12 pl-4 " 
             required type="password" name="passwordControl" 
             value={passwordControl} 
             onChange={(e) => setPasswordControl(e.target.value)} />
+      <br/>      
         {errorMessage && <p className="uppercase tracking-wide text-red-700 text-xl font-bold mb-2">{errorMessage}</p>}
         <button 
             className='inline-flex items-center px-3.5 py-2 border border-transparent uppercase tracking-wide text-xl font-bold mb-2 text-white bg-red-700 hover:bg-red-700 ' 
