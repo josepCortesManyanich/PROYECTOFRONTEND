@@ -2,10 +2,11 @@
 
 ## Description
 
-This application is called PURO-FIGHTERS. It is used for make an order in all the fighters of the Puro Impacto clubs.
+This application is called PURO-FIGHTERS. It is used for make an order in all the fighters of the Puro
 
 > Add a picture (logo, design, actual screen, gif, etc, whichever you prefer.)
-![](picture.png)
+![](../PROYECTOFRONTEND/src/images/LOGO.jpg)
+
 
 ---
 ## Instructions
