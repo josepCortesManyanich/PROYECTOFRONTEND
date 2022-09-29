@@ -16,8 +16,12 @@ export default function Training() {
         }
         data()
     },[])
+       
+    
+
     return (
         <ul  className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+ 
         {training && training.map((elem) => (
           <li
             key={elem._id}
