@@ -5,6 +5,7 @@ import Logo from '../images/LOGO.jpg'
 
 export default function Training() {
     const [training, setTraining] = useState(null);
+   
     useEffect(() =>{
         const data= async () =>{
             try {
@@ -16,7 +17,7 @@ export default function Training() {
         }
         data()
     },[])
-       
+    
     
 
     return (
